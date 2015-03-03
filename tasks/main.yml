@@ -1,0 +1,10 @@
+---
+# Installs OpenJDK version 7
+
+- name: install required packages
+  apt: update_cache=yes cache_valid_time=3600 pkg={{ item }} state=present # won't update if done under an hour ago
+  with_items:
+    - openjdk-7-jdk
+
+- include: make_default_java_installation.yml
+  when: openjdk_7_make_default_java_installation == true

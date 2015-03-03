@@ -1,0 +1,20 @@
+---
+galaxy_info:
+  description: Installs version 7 of the OpenJDK
+  author: British Antarctic Survey - Web and Applications Team
+  company: British Antarctic Survey
+  license: MIT
+  min_ansible_version: 1.6
+  platforms:
+  - name: Ubuntu
+      - trusty
+
+armadillo_info:
+  name: OpenJDK 7
+  version: 0.1.0
+  source: git@stash.ceh.ac.uk:7999/barc/openjdk-7.git
+  dependencies:
+  - git@stash.ceh.ac.uk:7999/barc/core.git#v0.7.2
+
+dependencies:
+  - core

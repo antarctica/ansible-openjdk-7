@@ -1,0 +1,17 @@
+---
+
+- name: check if default JDK directory exists
+  stat: path="{{ default_java_installation_directory_path }}"
+  register: openjdk_7_default_directory_available
+
+- name: create directory for default JDK
+  file: path="{{ default_java_installation_directory_path }}" state=directory
+  when: openjdk_7_default_directory_available.stat.exists == false
+
+- name: check if default is set
+  stat: path="{{ default_java_installation_directory_path }}/{{ default_java_installation_directory_name }}"
+  register: openjdk_7_default_available
+
+- name: create symlink to create default JDK
+  file: path="{{ default_java_installation_directory_path }}/{{ default_java_installation_directory_name }}" src=/usr/lib/jvm/java-7-openjdk-amd64 state=link
+  when: openjdk_7_default_available.stat.exists == false

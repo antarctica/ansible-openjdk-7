@@ -1,0 +1,7 @@
+---
+# Default variables - inventory or playbook overrides will be respected
+
+openjdk_7_make_default_java_installation: true
+
+default_java_installation_directory_path: /usr/java
+default_java_installation_directory_name: default
